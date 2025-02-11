@@ -2,9 +2,9 @@ let currentPlayer = 1;
 
 const currentPlayerHTML = document.getElementById("currentPlayer");
 const playerTurnHTML = document.getElementById("playerTurn");
-const rollSound = new Audio('assets/547929__scifisounds__dice-roll-2.mp3');
-const laughSound = new Audio('assets/381375__funwithsound__laugh-crowd-1.mp3');
-const cheerSound = new Audio('assets/371339__johanneskristjansson__cheer-crowd.mp3');
+const rollSound = new Audio('assets/dice-rolling.wav');
+const laughSound = new Audio('assets/laugh.wav');
+const cheerSound = new Audio('assets/cheer.wav');
 
 document.getElementById("rollDiceBtn").addEventListener("click", function () {
     rollSound.play();
@@ -41,12 +41,13 @@ document.getElementById("rollDiceBtn").addEventListener("click", function () {
     // Ez a hatos újradobás miatt kell, ugyanis akkor nem szabad játékos váltani
     if (currentPlayer === 1 && diceResult < 6) {
         changePlayer(2);
-    } else if(diceResult < 6){
+    } else if (diceResult < 6) {
         changePlayer(1);
     }
-    function changePlayer(nextPlayer) {
-        currentPlayerHTML.innerHTML = `Játékos ${currentPlayer} dobása`;
-        playerTurnHTML.innerHTML = `Most játékos ${nextPlayer} jön`;
-        currentPlayer = nextPlayer; // következő játékos
-    }
 });
+
+function changePlayer(nextPlayer) {
+    currentPlayerHTML.innerHTML = `Játékos ${currentPlayer} dobása`;
+    playerTurnHTML.innerHTML = `Most játékos ${nextPlayer} jön`;
+    currentPlayer = nextPlayer; // következő játékos
+}
